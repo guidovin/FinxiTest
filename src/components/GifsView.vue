@@ -1,6 +1,6 @@
 <template>
   <span>
-    <h3 v-if="gifs.length > 0" is=sui-header class="instruction-header"> Escolha ou remova uma Gif com a estrela </h3> 
+    <h3 v-if="gifs.length > 0" is=sui-header class="instruction-header custom-font"> Escolha ou remova uma Gif com a estrela </h3> 
     <div class="gifs-wrapper">
       <div v-for="gif of gifs"  :key="gif.id">
         <div class="overlayWrapper unitWrapper">
@@ -24,7 +24,6 @@ export default {
     saveGif: Function,
     pickGif: Function
   },
-  
 }
 </script>
 

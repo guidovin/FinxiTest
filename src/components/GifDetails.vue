@@ -1,6 +1,6 @@
 <template>
   <div class="gif-wrapper">
-    <h3 is=sui-header color="yellow">Altere as informações da Gif escolhida</h3> 
+    <h3 is=sui-header color="yellow" class="custom-font">Altere as informações da Gif escolhida</h3> 
     <div :key="gif.id">
       <div class="editing-wrapper">
         <img :src=" gif ? gif.src:'' " />
@@ -35,6 +35,7 @@ export default {
     this.newName = this.gif.name;
     this.newSrc = this.gif.src;
   },
+
   methods:{
     buildNewGif(params){
       let newGif = this.gif;
