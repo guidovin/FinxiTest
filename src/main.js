@@ -12,6 +12,9 @@ export const store = new Vuex.Store({
     _gifs:[],
   },
   mutations:{
+    _clearGifs(state, _){
+      state._gifs = state._gifs.filter(gif => gif.saved);
+    },
     _saveGif( state, gifData ){
       let editedGif = {...gifData};
       editedGif.saved = !editedGif.saved;

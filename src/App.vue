@@ -5,10 +5,10 @@
     </h1>
     <sui-input type="text"  v-model="searchQuery"/>
     <sui-button-group>
-      <sui-button icon="search" @click="fetchGifs" ></sui-button>
+      <sui-button icon="search" v-on:click="() => {clearSearch(); fetchGifs()}" ></sui-button>
       <sui-button icon="star" :color="displaySaved ? 'red':'blue'" :togle="displaySaved" @click="togleDisplay"></sui-button>
     </sui-button-group>
-    <GifsView v-if="!displaySaved && !details" :gifs="_gifs" :saveGif="saveGif"/>
+    <GifsView v-if="!displaySaved && !details" :gifs="_gifs.filter(gif => !gif.saved)" :saveGif="saveGif"/>
     <GifsView v-if="displaySaved && !details" :gifs="_gifs.filter(gif => gif.saved)" :saveGif="saveGif" :pickGif="setSelectedGif"/>
     <GifDetails v-if="details" :gif="selectedGif" :editGif="editGif" :toggleDetails="togleDetails"/>
   </div>
@@ -51,6 +51,9 @@ export default {
     GifDetails
   },
   methods:{
+    clearSearch(){
+      store.commit('_clearGifs', {})
+    },
     togleDisplay(){
       this.displaySaved = !this.displaySaved;
     }, 
